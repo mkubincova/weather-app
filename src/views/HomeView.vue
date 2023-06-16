@@ -9,7 +9,8 @@
         <p v-if="!searchError && mapboxSearchResults.length === 0">Nothing in here, try a different query.
         </p>
         <template v-else>
-          <li v-for="searchResult in mapboxSearchResults" :key="searchResult.id" class="py-2 cursor-pointer">
+          <li v-for="searchResult in mapboxSearchResults" :key="searchResult.id" class="py-2 cursor-pointer"
+            @click="previewCity(searchResult)">
             {{ searchResult.place_name }}</li>
         </template>
       </ul>
@@ -20,7 +21,9 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
+import { useRouter } from 'vue-router';
 
+const router = useRouter();
 const mapboxAPIkey = "pk.eyJ1IjoibWt1YmluY292YSIsImEiOiJjbGl5Y2R1MmcwNmx0M2xzOWoxOG9jeHJ6In0.P_Jm3IFNSEI7emDHqmt7Cg";
 const searchQuery = ref('');
 const queryTimeout = ref(null);
@@ -35,7 +38,6 @@ const getSearchResults = () => {
         const result = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${searchQuery.value}.json?access_token=${mapboxAPIkey}&types=place`);
         mapboxSearchResults.value = result.data.features;
       } catch {
-        console.log(searchError.value);
         searchError.value = true;
       }
 
@@ -43,5 +45,18 @@ const getSearchResults = () => {
     }
     mapboxSearchResults.value = null;
   }, 300);
+};
+
+const previewCity = (result) => {
+  const [city, state] = result.place_name.split(",");
+  router.push({
+    name: "cityView",
+    params: { state: state.replaceAll(" ", ""), city: city },
+    query: {
+      lat: result.geometry.coordinates[1],
+      lng: result.geometry.coordinates[0],
+      preview: true,
+    }
+  });
 };
 </script>
