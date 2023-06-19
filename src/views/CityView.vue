@@ -2,8 +2,11 @@
     <div>
         <Suspense>
             <AsyncCityView />
+
             <template #fallback>
-                <p>Loading...</p>
+                <div class="container">
+                    <p class="text-white pt-3">Loading...</p>
+                </div>
             </template>
         </Suspense>
     </div>
