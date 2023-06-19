@@ -19,9 +19,8 @@ const getCities = async () => {
 
         const requests = [];
         savedCities.value.forEach((city) => {
-            console.log(city);
             requests.push(
-                axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.coords.lat}&lon=${city.coords.lng}&appid=b61cf44395c7b8b0d559ce679c4d6052&units=metric`)
+                axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${city.coords.lat}&lon=${city.coords.lng}&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}&units=metric`)
             );
         });
 
