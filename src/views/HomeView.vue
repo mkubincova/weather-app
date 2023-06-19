@@ -2,9 +2,8 @@
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
       <input type="text" placeholder="Search for a city or state" v-model="searchQuery" @input="getSearchResults"
-        class="w-full py-2 px-2 bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]">
-      <ul class="abosolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]"
-        v-if="mapboxSearchResults">
+        class="w-full py-3 px-2 rounded-md shadow-md cursor-pointer focus:outline-2 focus:outline-weather-secondary focus:outline-none text-black">
+      <ul class="w-full absolute top-[75px] p-2 bg-white text-black shadow-md rounded-md" v-if="mapboxSearchResults">
         <p v-if="searchError">Oops, something went wrong, please try again.</p>
         <p v-if="!searchError && mapboxSearchResults.length === 0">Nothing in here, try a different query.
         </p>
@@ -57,10 +56,14 @@ const getSearchResults = () => {
 };
 
 const previewCity = (result) => {
-  const [city, state] = result.place_name.split(",");
+  const resultArray = result.place_name.split(",");
+  let city, state, country;
+  if (resultArray.length === 3) [city, state, country] = resultArray;
+  if (resultArray.length === 2) [city, country] = resultArray;
+
   router.push({
     name: "cityView",
-    params: { state: state.replaceAll(" ", ""), city: city },
+    params: { country: country.replaceAll(" ", ""), state: state ? state.replaceAll(" ", "") : '', city: city },
     query: {
       lat: result.geometry.coordinates[1],
       lng: result.geometry.coordinates[0],

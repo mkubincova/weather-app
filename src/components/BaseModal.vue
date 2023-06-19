@@ -1,11 +1,13 @@
 <template>
     <Teleport to="body">
         <Transition name="modal-outer">
-            <div v-show="modalActive" class="fixed inset-0 bg-black bg-opacity-30 flex justify-center px-8">
+            <div v-show="modalActive" class="fixed inset-0 bg-black bg-opacity-30 flex justify-center items-center p-4">
+                <div @click="$emit('close-modal')" class="fixed inset-0 -z-10"></div>
                 <Transition name="modal-inner">
-                    <div v-if="modalActive" class="p-4 bg-white self-start mt-32 max-w-screen-md">
+                    <div v-if="modalActive"
+                        class="p-4 bg-white max-w-screen-md max-h-[calc(100vh-2rem)] overflow-y-auto rounded-md">
                         <slot />
-                        <button class="text-white mt-8 bg-weather-primary py-2 px-6"
+                        <button class="text-white mt-8 bg-weather-secondary py-2 px-6 rounded-sm"
                             @click="$emit('close-modal')">Close</button>
                     </div>
                 </Transition>
@@ -20,8 +22,8 @@ defineProps({
         type: Boolean,
         default: false,
     }
-})
-defineEmits(["close-modal"])
+});
+defineEmits(["close-modal"]);
 </script>
 
 <style scoped>

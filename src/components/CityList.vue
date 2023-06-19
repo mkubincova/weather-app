@@ -41,7 +41,7 @@ const router = useRouter();
 const gotToCityView = (city) => {
     router.push({
         name: 'cityView',
-        params: { state: city.state, city: city.city },
+        params: { state: city.state, city: city.city, country: city.country },
         query: { id: city.id, lat: city.coords.lat, lng: city.coords.lng },
     });
 };
