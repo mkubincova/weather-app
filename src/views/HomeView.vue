@@ -2,14 +2,16 @@
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
       <input type="text" placeholder="Search for a city or state" v-model="searchQuery" @input="getSearchResults"
-        class="w-full py-3 px-2 rounded-md shadow-md cursor-pointer focus:outline-2 focus:outline-weather-secondary focus:outline-none text-black">
-      <ul class="w-full absolute top-[75px] p-2 bg-white text-black shadow-md rounded-md" v-if="mapboxSearchResults">
+        class="w-full py-3 px-2 rounded-md shadow-md cursor-pointer text-black">
+      <ul class="w-full absolute top-[75px] py-2 bg-white text-black shadow-md rounded-md resultsListElement"
+        v-if="mapboxSearchResults">
         <p v-if="searchError">Oops, something went wrong, please try again.</p>
         <p v-if="!searchError && mapboxSearchResults.length === 0">Nothing in here, try a different query.
         </p>
         <template v-else>
-          <li v-for="searchResult in mapboxSearchResults" :key="searchResult.id" class="py-2 cursor-pointer"
-            @click="previewCity(searchResult)">
+          <li v-for="searchResult in mapboxSearchResults" :key="searchResult.id"
+            class="p-2 cursor-pointer focus:outline-none hover:bg-cyan-600 hover:text-white focus:text-white focus:bg-cyan-600"
+            @click="previewCity(searchResult)" tabindex="0">
             {{ searchResult.place_name }}</li>
         </template>
       </ul>

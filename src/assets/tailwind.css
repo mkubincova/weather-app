@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+    input:focus, select:focus, textarea:focus, button:focus, object:focus, a[href]:focus, [tabindex]:focus {
+        @apply outline outline-2 outline-weather-secondary outline-offset-2;
+    }
+}

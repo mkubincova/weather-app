@@ -1,7 +1,12 @@
 <template>
-    <div class="flex py-6 px-3 bg-weather-secondary rounded-md shadow-md cursor-pointer">
+    <router-link :to="{
+        name: 'cityView',
+        params: { state: city.state, city: city.city, country: city.country },
+        query: { id: city.id, lat: city.coords.lat, lng: city.coords.lng },
+    }" class="flex py-6 px-3 bg-weather-secondary rounded-md shadow-md cursor-pointer">
         <div class="flex flex-col flex-1 gap-2">
-            <h2 class="text-3xl">{{ city.city }}</h2>
+            <h2 class="text-3xl">{{ city.city }} {{ console.log(city)
+            }}</h2>
             <h3 class="text-sm">{{ city.state ? `${city.state}, ` : '' }} {{ city.country }}</h3>
         </div>
         <div class="flex flex-col gap-2">
@@ -17,7 +22,7 @@
                 }}&deg;</span>
             </div>
         </div>
-    </div>
+    </router-link>
 </template>
 
 <script setup>
