@@ -1,8 +1,8 @@
 <template>
-    <header class="sticky top-0 bg-weather-primary shadow-lg">
-        <nav class="container flex items-center gap-4 text-white py-3">
-            <RouterLink :to="{ name: 'home' }">
-                <div class="flex items-center gap-3" v-if="route.name !== 'home'">
+    <header class="sticky top-0 bg-white shadow-lg z-10">
+        <nav class="container flex items-center gap-4  py-3">
+            <RouterLink :to="{ name: 'home' }" v-if="route.name !== 'home'">
+                <div class="flex items-center gap-3">
                     <i class="fa-solid fa-arrow-left text-xl"></i>
                 </div>
             </RouterLink>

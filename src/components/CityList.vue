@@ -1,5 +1,5 @@
 <template>
-    <CityCard v-for="city in savedCities" :key="city.id" :city="city" />
+    <CityCard v-for="city in savedCities" :key="city.id" :city="city" :icon="city.weather.weather[0].icon" />
     <p v-if="savedCities.length === 0">No locations added. To start tracking a location, search in the field above.</p>
 </template>
 

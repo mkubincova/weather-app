@@ -7,7 +7,7 @@
                     <div v-if="modalActive"
                         class="p-4 bg-white max-w-screen-md max-h-[calc(100vh-2rem)] overflow-y-auto rounded-md">
                         <slot />
-                        <button class="text-white mt-8 bg-weather-secondary py-2 px-6 rounded-sm"
+                        <button class=" mt-8 bg-black text-white py-2 px-6 rounded-sm"
                             @click="$emit('close-modal')">Close</button>
                     </div>
                 </Transition>

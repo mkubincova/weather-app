@@ -4,6 +4,9 @@
 
 @layer utilities {
     input:focus, select:focus, textarea:focus, button:focus, object:focus, a[href]:focus, [tabindex]:focus {
-        @apply outline outline-2 outline-weather-secondary outline-offset-2;
+        @apply outline outline-2 outline-black outline-offset-2;
+    }
+    .text-shadow {
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
     }
 }
