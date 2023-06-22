@@ -1,17 +1,15 @@
 <template>
     <header class="sticky top-0 bg-white shadow-lg z-10">
         <nav class="container flex items-center gap-4  py-3">
-            <RouterLink :to="{ name: 'home' }" v-if="route.name !== 'home'">
-                <div class="flex items-center gap-3">
-                    <i class="fa-solid fa-arrow-left text-xl"></i>
-                </div>
+            <RouterLink :to="{ name: 'home' }" v-if="route.name !== 'home'" aria-label="Back to homepage">
+                <i class="fa-solid fa-arrow-left text-xl"></i>
             </RouterLink>
 
             <div class="flex gap-3 flex-1 justify-end">
-                <i class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"
-                    @click="toggleModal"></i>
-                <i class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"
-                    @click="addCity" v-if="route.query.preview"></i>
+                <button aria-label="App information" @click="toggleModal" id="modalToggleIcon"><i
+                        class="fa-solid fa-circle-info text-xl hover:text-weather-secondary duration-150 cursor-pointer"></i></button>
+                <button aria-label="Save location to homepage" @click="addCity" v-if="route.query.preview"><i
+                        class="fa-solid fa-plus text-xl hover:text-weather-secondary duration-150 cursor-pointer"></i></button>
             </div>
 
             <BaseModal :modalActive="modalActive" @close-modal="toggleModal">
@@ -53,7 +51,7 @@
 <script setup>
 import { RouterLink, routerKey, useRoute, useRouter } from 'vue-router';
 import BaseModal from './BaseModal.vue';
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 import { uid } from 'uid';
 
 const savedCities = ref([]);
@@ -61,8 +59,15 @@ const route = useRoute();
 const router = useRouter();
 const modalActive = ref(null);
 
-const toggleModal = () => {
+const toggleModal = async () => {
     modalActive.value = !modalActive.value;
+
+    if (modalActive.value) {
+        await nextTick();
+        document.getElementById("modalCloseButton").focus();
+    } else {
+        document.getElementById('modalToggleIcon').focus();
+    }
 };
 
 const addCity = () => {
