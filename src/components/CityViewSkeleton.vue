@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center pb-[70px]">
+    <div class="flex flex-col items-center pb-[80px]">
         <div class="py-6 px-4 max-w-screen-md w-full">
             <AnimatedPlaceholder class="w-full h-[56px]" />
 
