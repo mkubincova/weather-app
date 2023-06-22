@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col flex-1 items-center"
+    <div class="flex flex-col flex-1 items-center pb-[70px]"
         :class="[sunIcons.includes(weatherData.current.weather[0].icon) ? 'bg-sun' : cloudIcons.includes(weatherData.current.weather[0].icon) ? 'bg-cloud' : rainIcons.includes(weatherData.current.weather[0].icon) ? 'bg-rain' : 'bg-night text-white']">
         <!-- Banner -->
         <div v-if="route.query.preview" class="p-4 bg-black bg-opacity-20 shadow-inner w-full text-center">

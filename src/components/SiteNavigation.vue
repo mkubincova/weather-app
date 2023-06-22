@@ -1,6 +1,6 @@
 <template>
     <header class="sticky top-0 bg-white shadow-lg z-10">
-        <nav class="container flex items-center gap-4  py-3">
+        <nav class="container max-w-screen-md flex items-center gap-4  py-3">
             <RouterLink :to="{ name: 'home' }" v-if="route.name !== 'home'" aria-label="Back to homepage">
                 <i class="fa-solid fa-arrow-left text-xl"></i>
             </RouterLink>
