@@ -21,7 +21,8 @@
                 </div>
                 <div class="text-right">
                     <p class="text-3xl">{{ new Date(weatherData.currentTime).toLocaleString("en-gb", {
-                        timeStyle: "short"
+                        hour: "numeric",
+                        minute: "2-digit"
                     }) }}</p>
                     <p class="text-sm opacity-70">UTC{{ weatherData.timezone_offset > 0 ? '+' : '' }}{{
                         weatherData.timezone_offset !== 0 ?
@@ -60,7 +61,8 @@
                     <span class="text-sm opacity-70">Sunrise</span>
                     <span class="text-lg">{{ new Date(getLocalDateTime(weatherData.current.sunrise,
                         weatherData.timezone_offset)).toLocaleString("en-gb", {
-                            timeStyle: "short"
+                            hour: "numeric",
+                            minute: "2-digit"
                         }) }} </span>
                 </div>
                 <div class="card-sm flex flex-col items-center gap-1">
@@ -68,7 +70,8 @@
                     <span class="text-sm opacity-70">Sunset</span>
                     <span class="text-lg">{{ new Date(getLocalDateTime(weatherData.current.sunset,
                         weatherData.timezone_offset)).toLocaleString("en-gb", {
-                            timeStyle: "short"
+                            hour: "numeric",
+                            minute: "2-digit"
                         }) }}</span>
                 </div>
                 <div class="card-sm flex flex-col items-center gap-1">
