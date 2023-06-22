@@ -1,13 +1,13 @@
 <template>
-    <div class="flex py-6 px-3 bg-weather-secondary rounded-md shadow-md">
-        <div class="flex flex-col flex-1 gap-2">
-            <AnimatedPlaceholder class="max-w-[50%]" />
-            <AnimatedPlaceholder class="max-w-[40%]" />
+    <div class="flex gap-2 items-center p-3 rounded-md shadow-md cursor-pointer">
+        <AnimatedPlaceholder class="w-[80px] h-[80px]" />
+
+        <div class="flex flex-col flex-1 gap-1">
+            <AnimatedPlaceholder class="max-w-[140px] h-[32px]" />
+            <AnimatedPlaceholder class="max-w-[120px] h-[16px]" />
         </div>
-        <div class="flex flex-col gap-2 flex-1 items-end">
-            <AnimatedPlaceholder class="max-w-[50px] w-full" />
-            <AnimatedPlaceholder class="max-w-[75px] w-full" />
-        </div>
+
+        <AnimatedPlaceholder class="w-[55px] h-[40px]" />
     </div>
 </template>
 

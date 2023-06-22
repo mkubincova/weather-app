@@ -2,11 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+@layer components {
     input:focus, select:focus, textarea:focus, button:focus, object:focus, a[href]:focus, [tabindex]:focus {
         @apply outline outline-2 outline-black outline-offset-2;
     }
+    .card {
+        @apply bg-white bg-opacity-30 p-4 text-shadow rounded-md shadow-md;
+    }
+    .card-sm {
+        @apply bg-white bg-opacity-30 p-2 text-shadow rounded-md shadow-md
+    }
+    .button {
+        @apply bg-black text-white py-2 px-6 rounded-md cursor-pointer hover:bg-opacity-70;
+    }
+}
+
+@layer utilities {
     .text-shadow {
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, .3);
+        text-shadow: 0.02em 0.02em 0.05em rgba(0, 0, 0, .2);
     }
 }

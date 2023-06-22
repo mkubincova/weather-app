@@ -5,8 +5,8 @@
         class="w-full py-3 px-2 border-2 rounded-md cursor-pointer text-black">
       <ul class="w-full absolute top-[75px] py-2 bg-white text-black shadow-md rounded-md z-10"
         v-if="mapboxSearchResults">
-        <p v-if="searchError">Oops, something went wrong, please try again.</p>
-        <p v-if="!searchError && mapboxSearchResults.length === 0">Nothing in here, try a different query.
+        <p class="p-2" v-if="searchError">Oops, something went wrong, please try again.</p>
+        <p class="p-2" v-if="!searchError && mapboxSearchResults.length === 0">Nothing in here, try a different query.
         </p>
         <template v-else>
           <li v-for="searchResult in mapboxSearchResults" :key="searchResult.id"
